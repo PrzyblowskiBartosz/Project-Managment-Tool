@@ -4,15 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import pl.przybylowski.ppmtool.domain.Project;
 import pl.przybylowski.ppmtool.services.MapValidationErrorService;
 import pl.przybylowski.ppmtool.services.ProjectService;
 
 import javax.validation.Valid;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/project")
@@ -46,7 +43,7 @@ public class ProjectController {
 
     @DeleteMapping("/{projectId}")
     public ResponseEntity<?> deleteProject(@PathVariable String projectId) {
-        projectService.deleteProjectByIdencifier(projectId.toUpperCase());
+        projectService.deleteProjectByIdentifier(projectId.toUpperCase());
         return new ResponseEntity<String>("Project with ID: " +projectId+ " was deleted successfully.", HttpStatus.OK);
     }
 }
